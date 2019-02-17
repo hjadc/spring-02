@@ -7,6 +7,7 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 
 /**
  * 注解式AOP的切面类 需要到spring里开启注解 <aop:aspectj-autoproxy/>
@@ -53,5 +54,20 @@ public class MyAspectAnnotation {
 	public void after() {
 		System.out.println("最终增强");
 	}
+	
+	
+	/**
+	 * save方法的最终增强,不管有没有异常,都会执行
+	 */
+	@After(value="MyAspectAnnotation.pointcut1()")
+	public void afterBySave() {
+		System.out.println("save方法的最终增强=========");
+	}
+	
+	/**
+	 * 将切入点提取出来,用法如:save方法的最终增强
+	 */
+	@Pointcut("execution(* com.huju.aop.demo1.aop_annotation.MyCustomerDaoImpl.save(..))")
+	private void pointcut1() {}
 
 }
