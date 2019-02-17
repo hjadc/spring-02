@@ -33,4 +33,14 @@
  			</aop:aspect>
  		</aop:config>
  		
+ 		
+ 		<!-- 注解式AOP  开启AOP的自动代理注解 -->
+ 		<aop:aspectj-autoproxy/>
+ 		
+ 		<!-- 配置目标类 -->
+ 		<bean id="myCustomerDao" class="com.huju.aop.demo1.aop_annotation.MyCustomerDaoImpl"></bean>
+ 		
+ 		<!-- 配置切面类 -->
+ 		<bean id="myAspectAnno" class="com.huju.aop.demo1.aop_annotation.MyAspectAnnotation"></bean>
+ 		
 </beans>
